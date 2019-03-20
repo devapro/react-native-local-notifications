@@ -109,8 +109,6 @@ public class AlarmReceiver extends BroadcastReceiver {
                 PendingIntent contentIntent = PendingIntent.getActivity(context, 0, openIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 mBuilder.setContentIntent(contentIntent);
 
-                String shortenedDatetime = datetime.replace(":", "").replace("-", "").replace("/", "").replace("\\", "").replace(" ", "").substring(2);
-                Integer mId = Integer.parseInt(shortenedDatetime);
                 NotificationManager notificationManager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -128,7 +126,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                     notificationManager.createNotificationChannel(channel);
                 }
 
-                notificationManager.notify(mId, mBuilder.build());
+                notificationManager.notify(id, mBuilder.build());
             }
         }
     }

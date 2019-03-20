@@ -4,7 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.os.Build;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -114,7 +113,7 @@ public class RNLocalNotificationsModule extends ReactContextBaseJavaModule {
         PendingIntent pi = PendingIntent.getBroadcast(reactContext, id, intent, PendingIntent.FLAG_NO_CREATE);
         if(pi != null){
             pi.cancel();
+            alarmManager.cancel(pi);
         }
-        alarmManager.cancel(pi);
     }
 }
